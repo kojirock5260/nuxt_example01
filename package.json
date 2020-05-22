@@ -5,11 +5,11 @@
   "author": "kojirock",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "dev": "nuxt -p 9998",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "lint": "eslint --ext .js,.vue .",
+    "lint": "eslint --fix --ext .js,.vue .",
     "test": "jest"
   },
   "lint-staged": {
