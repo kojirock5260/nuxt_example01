@@ -1,6 +1,6 @@
 <template>
-  <div class="z-10 flex-auto bg-white m-2 p-3 shadow">
-    <span>ID:{{ card.id }}&nbsp;{{ card.title }}</span>
+  <div class="z-10 flex-auto bg-white m-2 shadow">
+    <input v-model="computedCardTitle" class="w-full p-3" />
   </div>
 </template>
 
@@ -8,10 +8,20 @@
 export default {
   name: 'Card',
   props: {
-    card: {
-      type: Object,
+    cardTitle: {
+      type: String,
       require: true,
-      default: null
+      default: ''
+    }
+  },
+  computed: {
+    computedCardTitle: {
+      get() {
+        return this.cardTitle
+      },
+      set(value) {
+        this.$emit('update:cardTitle', value)
+      }
     }
   }
 }
