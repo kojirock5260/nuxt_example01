@@ -6,14 +6,16 @@
       :key="k"
       :card-title.sync="card.title"
     />
+    <AddCard @onAddCard="onAddCard" />
   </div>
 </template>
 
 <script>
 import Card from './Card'
+import AddCard from './AddCard'
 export default {
   name: 'CardList',
-  components: { Card },
+  components: { AddCard, Card },
   props: {
     title: {
       type: String,
@@ -24,6 +26,12 @@ export default {
       type: Array,
       require: true,
       default: null
+    }
+  },
+  methods: {
+    onAddCard(title) {
+      const type = this.title
+      this.$emit('doAddCard', type, title)
     }
   }
 }

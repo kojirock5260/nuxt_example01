@@ -1,6 +1,6 @@
 <template>
   <div class="z-10 flex-auto bg-white m-2 shadow">
-    <input v-model="computedCardTitle" class="w-full p-3" />
+    <p class="w-full p-3">{{ cardTitle }}</p>
   </div>
 </template>
 
@@ -12,16 +12,6 @@ export default {
       type: String,
       require: true,
       default: ''
-    }
-  },
-  computed: {
-    computedCardTitle: {
-      get() {
-        return this.cardTitle
-      },
-      set(value) {
-        this.$emit('update:cardTitle', value)
-      }
     }
   }
 }
