@@ -4,19 +4,22 @@
 
     <div class="flex">
       <CardList
-        title="todo"
+        type="todo"
         :card-list="cardList.todo"
         @doAddCard="doAddCard"
+        @doModifyCard="doModifyCard"
       />
       <CardList
-        title="doing"
+        type="doing"
         :card-list="cardList.doing"
         @doAddCard="doAddCard"
+        @doModifyCard="doModifyCard"
       />
       <CardList
-        title="done"
+        type="done"
         :card-list="cardList.done"
         @doAddCard="doAddCard"
+        @doModifyCard="doModifyCard"
       />
     </div>
   </div>
@@ -30,18 +33,18 @@ export default {
     return {
       cardList: {
         todo: [
-          { title: 'aaa', body: 'AAA' },
-          { title: 'bbb', body: 'BBB' },
-          { title: 'ccc', body: 'CCC' },
-          { title: 'ddd', body: 'DDD' },
-          { title: 'eee', body: 'EEE' },
-          { title: 'fff', body: 'FFF' }
+          { title: 'aaa', body: 'AAA', status: 'todo' },
+          { title: 'bbb', body: 'BBB', status: 'todo' },
+          { title: 'ccc', body: 'CCC', status: 'todo' },
+          { title: 'ddd', body: 'DDD', status: 'todo' },
+          { title: 'eee', body: 'EEE', status: 'todo' },
+          { title: 'fff', body: 'FFF', status: 'todo' }
         ],
-        doing: [{ title: '○○○○○', body: '◎◎◎◎◎◎◎' }],
+        doing: [{ title: '○○○○○', body: '◎◎◎◎◎◎◎', status: 'doing' }],
         done: [
-          { title: '000', body: '0000000000' },
-          { title: '111', body: '1111111111' },
-          { title: '222', body: '2222222222' }
+          { title: '000', body: '0000000000', status: 'done' },
+          { title: '111', body: '1111111111', status: 'done' },
+          { title: '222', body: '2222222222', status: 'done' }
         ]
       }
     }
@@ -52,6 +55,10 @@ export default {
         title,
         body: ''
       })
+    },
+    doModifyCard(type, key, title, body) {
+      this.cardList[type][key].title = title
+      this.cardList[type][key].body = body
     }
   }
 }

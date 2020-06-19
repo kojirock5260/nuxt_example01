@@ -2,7 +2,7 @@
   <div class="px-2">
     <p @click="isPushedAddCardButton = true">＋ カードを追加</p>
     <div v-show="isPushedAddCardButton">
-      <input v-model="addCardTitle" class="w-full p-3" />
+      <input v-model="addCardTitle" class="w-full p-3 border-2" />
 
       <div class="mt-2">
         <button
