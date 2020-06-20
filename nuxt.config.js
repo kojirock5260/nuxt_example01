@@ -27,7 +27,10 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [{ src: '~/plugins/vue-js-modal.js' }],
+  plugins: [
+    { src: '~/plugins/vue-js-modal.js' },
+    { src: '~/plugins/vee-validate.js' }
+  ],
   /*
    ** Nuxt.js dev-modules
    */
@@ -55,6 +58,7 @@ export default {
    ** Build configuration
    */
   build: {
+    transpile: ['vee-validate/dist/rules'],
     /*
      ** You can extend webpack config here
      */

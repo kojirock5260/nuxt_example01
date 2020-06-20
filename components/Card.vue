@@ -1,5 +1,5 @@
 <template>
-  <div class="z-10 flex-auto bg-white m-2 shadow">
+  <div class="z-10 flex-auto bg-white m-2 shadow cursor-pointer">
     <p class="w-full p-3" @click="$emit('showModal', cardKey)">
       {{ cardTitle }}
     </p>

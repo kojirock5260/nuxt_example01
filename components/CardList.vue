@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-1 bg-gray-100 m-2 cursor-pointer">
+  <div class="flex-1 bg-gray-100 m-2">
     <p class="text-xl ml-2">{{ type }}</p>
     <Card
       v-for="(card, k) in cardList"
