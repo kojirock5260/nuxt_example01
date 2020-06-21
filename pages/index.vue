@@ -7,18 +7,21 @@
         type="todo"
         :card-list="cardList.todo"
         @doAddCard="doAddCard"
+        @doDeleteCard="doDeleteCard"
         @doModifyCard="doModifyCard"
       />
       <CardList
         type="doing"
         :card-list="cardList.doing"
         @doAddCard="doAddCard"
+        @doDeleteCard="doDeleteCard"
         @doModifyCard="doModifyCard"
       />
       <CardList
         type="done"
         :card-list="cardList.done"
         @doAddCard="doAddCard"
+        @doDeleteCard="doDeleteCard"
         @doModifyCard="doModifyCard"
       />
     </div>
@@ -53,12 +56,16 @@ export default {
     doAddCard(type, title) {
       this.cardList[type].push({
         title,
-        body: ''
+        body: '',
+        status: type
       })
     },
     doModifyCard(type, key, title, body) {
       this.cardList[type][key].title = title
       this.cardList[type][key].body = body
+    },
+    doDeleteCard(type, key) {
+      this.cardList[type].splice(key, 1)
     }
   }
 }

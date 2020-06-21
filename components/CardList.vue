@@ -8,7 +8,10 @@
       :card-title="card.title"
       @showModal="showModal"
     />
-    <modals-container @onModifyCard="onModifyCard" />
+    <modals-container
+      @onModifyCard="onModifyCard"
+      @onDeleteCard="onDeleteCard"
+    />
     <AddCard @onAddCard="onAddCard" />
   </div>
 </template>
@@ -41,7 +44,7 @@ export default {
           cardData: this.cardList[cardKey]
         },
         {
-          height: 500
+          height: 550
         }
       )
     },
@@ -50,6 +53,10 @@ export default {
     },
     onModifyCard(cardKey, cardTitle, cardBody, cardStatus) {
       this.$emit('doModifyCard', cardStatus, cardKey, cardTitle, cardBody)
+      this.$modal.hideAll()
+    },
+    onDeleteCard(cardKey, cardStatus) {
+      this.$emit('doDeleteCard', cardStatus, cardKey)
       this.$modal.hideAll()
     }
   }

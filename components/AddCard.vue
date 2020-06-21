@@ -2,7 +2,7 @@
   <div class="px-2 mb-2">
     <p
       v-show="!isPushedAddCardButton"
-      class="cursor-pointer"
+      class="cursor-pointer inline-block"
       @click="isPushedAddCardButton = true"
     >
       ＋ カードを追加
@@ -21,8 +21,8 @@
             <button
               class="bg-blue-400 text-white font-bold py-2 px-4 rounded"
               :class="{
-                'hover:bg-blue-700 ': valid,
-                'bg-blue-500 ': valid,
+                'hover:bg-blue-700': valid,
+                'bg-blue-500': valid,
                 'cursor-not-allowed': !valid
               }"
               :disabled="!valid"
