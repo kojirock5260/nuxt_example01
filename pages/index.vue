@@ -9,6 +9,7 @@
         @doAddCard="doAddCard"
         @doDeleteCard="doDeleteCard"
         @doModifyCard="doModifyCard"
+        @doMoveCard="doMoveCard"
       />
       <CardList
         type="doing"
@@ -16,6 +17,7 @@
         @doAddCard="doAddCard"
         @doDeleteCard="doDeleteCard"
         @doModifyCard="doModifyCard"
+        @doMoveCard="doMoveCard"
       />
       <CardList
         type="done"
@@ -23,6 +25,7 @@
         @doAddCard="doAddCard"
         @doDeleteCard="doDeleteCard"
         @doModifyCard="doModifyCard"
+        @doMoveCard="doMoveCard"
       />
     </div>
   </div>
@@ -66,6 +69,9 @@ export default {
     },
     doDeleteCard(type, key) {
       this.cardList[type].splice(key, 1)
+    },
+    doMoveCard(cardList, type) {
+      this.cardList[type] = cardList
     }
   }
 }

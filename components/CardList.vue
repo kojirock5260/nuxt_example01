@@ -1,13 +1,20 @@
 <template>
   <div class="flex-1 bg-gray-100 m-2">
     <p class="text-xl ml-2">{{ type }}</p>
-    <Card
-      v-for="(card, k) in cardList"
-      :key="k"
-      :card-key="k"
-      :card-title="card.title"
-      @showModal="showModal"
-    />
+    <draggable
+      v-model="computedCardList"
+      v-bind="dragOptions"
+      @start="drag = true"
+      @end="drag = false"
+    >
+      <Card
+        v-for="(card, k) in cardList"
+        :key="k"
+        :card-key="k"
+        :card-title="card.title"
+        @showModal="showModal"
+      />
+    </draggable>
     <modals-container
       @onModifyCard="onModifyCard"
       @onDeleteCard="onDeleteCard"
@@ -17,12 +24,13 @@
 </template>
 
 <script>
+import draggable from 'vuedraggable'
 import Card from './Card'
 import AddCard from './AddCard'
 import CardDetailModal from './CardDetailModal'
 export default {
   name: 'CardList',
-  components: { AddCard, Card },
+  components: { AddCard, Card, draggable },
   props: {
     type: {
       type: String,
@@ -33,6 +41,23 @@ export default {
       type: Array,
       require: true,
       default: null
+    }
+  },
+  computed: {
+    computedCardList: {
+      get() {
+        return this.cardList
+      },
+      set(value) {
+        this.$emit('doMoveCard', value, this.type)
+      }
+    },
+    dragOptions() {
+      return {
+        animation: 0,
+        group: 'description',
+        ghostClass: 'ghost'
+      }
     }
   },
   methods: {
