@@ -1,5 +1,5 @@
 # example01
-aa
+
 > My world-class Nuxt.js project
 
 ## Build Setup
